@@ -1,9 +1,10 @@
 const express = require("express");
 const app = express();
-const errorMiddleware = require("./middleware/error")
+const errorMiddleware = require("./middleware/error");
+const cookieParser = require("cookie-parser")
 
-
-app.use(express.json())
+app.use(express.json());
+app.use(cookieParser());
 // routes imports
 
 const product = require("./routes/productRoute");
@@ -25,4 +26,4 @@ app.use(errorMiddleware);
 
 
 
-module.exports = app
+module.exports = app;
