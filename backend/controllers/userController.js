@@ -3,6 +3,7 @@ const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 const User = require("../models/userModel");
 const sendToken = require("../utils/jwtToken");
 const sendEmail = require("../utils/sendEmail");
+const crypto = require("crypto");
 
 
 
@@ -71,13 +72,13 @@ exports.forgotPassword = catchAsyncErrors(async (req, res, next) => {
     const user = await User.findOne({ email: req.body.email });
     console.log(user)
 
-    if (!user){
+    if (!user) {
         return next(new ErrorHandler("User not found", 404));
     }
 
     // if (user && typeof user.getResetPasswordToken === 'function') {
     const resetToken = user.getResetPasswordToken();
-        // Rest of your code
+    // Rest of your code
     // }
     console.log(resetToken);
 
@@ -112,3 +113,132 @@ exports.forgotPassword = catchAsyncErrors(async (req, res, next) => {
     }
 
 })
+
+
+
+exports.resetPassword = catchAsyncErrors(async (req, res, next) => {
+    const resetPasswordToken = crypto.createHash("sha256").update(req.params.token).digest("hex");
+
+    const user = await User.findOne({
+        resetPasswordToken,
+        resetPasswordExpire: { $gt: Date.now() },
+    });
+    if (!user) {
+        return next(new ErrorHandler("Reset Password Token is invalid or has been expired", 400));
+
+    }
+
+    if (req.body.password !== req.body.confirmPassword) {
+        return next(new ErrorHandler("Password dosen`t match", 400));
+
+    }
+    user.password = req.body.password;
+    user.resetPasswordToken = undefined;
+    user.resetPasswordExpire = undefined;
+
+    await user.save();
+
+    sendToken(user, 200, res);
+}
+
+
+
+);
+
+
+exports.getUserDetails = catchAsyncErrors(async (req, res, next) => {
+    const user = await User.findById(req.user.id);
+
+    res.status(200).json({
+        success: true,
+        user,
+    });
+});
+exports.updatePassword = catchAsyncErrors(async (req, res, next) => {
+    const user = await User.findById(req.user.id).select("+password");
+    const isPasswordMatch = await user.comparePassword(req.body.oldPassword);
+    if (!isPasswordMatch) {
+        return next(new ErrorHandler("Old password incorrect", 400));
+
+    }
+    if (req.body.newPassword !== req.body.confirmPassword) {
+        return next(new ErrorHandler("Password does not match", 400));
+    };
+    user.password = req.body.newPassword;
+    await user.save();
+
+    sendToken(user, 200, res);
+});
+exports.updateProfile = catchAsyncErrors(async (req, res, next) => {
+    const newUserData = {
+        name: req.body.name,
+        email: req.body.email,
+    };
+    // we will add cloudinary later 
+
+    const user = await User.findByIdAndUpdate(req.user.id, newUserData, {
+        new: true,
+        runValidators: true,
+        useFindAndModify: false,
+    });
+
+    res.status(200).json({
+        success: true,
+    });
+});
+
+
+exports.getAllUser = catchAsyncErrors(async(req,res,next)=>{
+    const users = await User.find();
+    res.status(200).json({
+        success:true,
+        users,
+    })
+})
+
+exports.getSingleUser = catchAsyncErrors(async(req,res,next)=>{
+    const user = await User.findById(req.params.id);
+    if(!user){
+        return next(new ErrorHandler(`user does not exists with  this id : ${req.params.id}`));
+    }
+    res.status(200).json({
+        success:true,
+        user,
+    });
+})
+
+// update role 
+
+exports.updateUserRole = catchAsyncErrors(async (req, res, next) => {
+    const newUserData = {
+        name: req.body.name,
+        email: req.body.email,
+        role: req.body.role,
+    };
+
+
+    const user = await User.findByIdAndUpdate(req.params.id, newUserData, {
+        new: true,
+        runValidators: true,
+        useFindAndModify: false,
+    });
+
+    res.status(200).json({
+        success: true,
+    });
+});
+
+
+
+// delete uder 
+exports.deleteUser = catchAsyncErrors(async (req, res, next) => {
+    const user = await User.findByIdAndDelete(req.params.id);
+    if (!user) {
+        return next(new ErrorHandler(`User does not exist with this ID: ${req.params.id}`));
+    }
+
+    res.status(200).json({
+        success: true,
+        message:"User Deleted Successfully"
+    });
+});
