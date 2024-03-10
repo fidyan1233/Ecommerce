@@ -7,6 +7,7 @@ const crypto = require("crypto");
 
 
 
+
 // user register 
 exports.registerUser = catchAsyncErrors(async (req, res, next) => {
     const { name, email, password } = req.body;
@@ -188,21 +189,21 @@ exports.updateProfile = catchAsyncErrors(async (req, res, next) => {
 });
 
 
-exports.getAllUser = catchAsyncErrors(async(req,res,next)=>{
+exports.getAllUser = catchAsyncErrors(async (req, res, next) => {
     const users = await User.find();
     res.status(200).json({
-        success:true,
+        success: true,
         users,
     })
 })
 
-exports.getSingleUser = catchAsyncErrors(async(req,res,next)=>{
+exports.getSingleUser = catchAsyncErrors(async (req, res, next) => {
     const user = await User.findById(req.params.id);
-    if(!user){
+    if (!user) {
         return next(new ErrorHandler(`user does not exists with  this id : ${req.params.id}`));
     }
     res.status(200).json({
-        success:true,
+        success: true,
         user,
     });
 })
@@ -239,6 +240,7 @@ exports.deleteUser = catchAsyncErrors(async (req, res, next) => {
 
     res.status(200).json({
         success: true,
-        message:"User Deleted Successfully"
+        message: "User Deleted Successfully"
     });
 });
+
