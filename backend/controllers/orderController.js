@@ -1,8 +1,7 @@
 const Order = require("../models/orderModel");
 const Product = require("../models/productModel");
-
-const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 const ErrorHandler = require("../utils/errorhandler");
+const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 
 // Create new Order
 exports.newOrder = catchAsyncErrors(async (req, res, next) => {
@@ -91,10 +90,15 @@ exports.updateOrder = catchAsyncErrors(async (req, res, next) => {
   }
 
   if (req.body.status === "Shipped") {
-    order.orderItems.forEach(async (o) => {
+    // Create an array to store promises returned by updateStock
+    const updateStockPromises = order.orderItems.map(async (o) => {
       await updateStock(o.product, o.quantity);
     });
+
+    // Wait for all updateStockPromises to resolve
+    await Promise.all(updateStockPromises);
   }
+
   order.orderStatus = req.body.status;
 
   if (req.body.status === "Delivered") {
@@ -107,23 +111,28 @@ exports.updateOrder = catchAsyncErrors(async (req, res, next) => {
   });
 });
 
-async function updateStock(id, quantity) {
-  const product = await Product.findById(id);
+async function updateStock(productId, quantity) {
+  const product = await Product.findById(productId);
+
+  if (!product) {
+    throw new Error("Product not found");
+  }
 
   product.Stock -= quantity;
 
   await product.save({ validateBeforeSave: false });
+  console.log(product);
 }
 
 // delete Order -- Admin
 exports.deleteOrder = catchAsyncErrors(async (req, res, next) => {
-  const order = await Order.findById(req.params.id);
+  const order = await Order.findByIdAndDelete(req.params.id);
 
   if (!order) {
     return next(new ErrorHandler("Order not found with this Id", 404));
   }
 
-  await order.remove();
+
 
   res.status(200).json({
     success: true,
