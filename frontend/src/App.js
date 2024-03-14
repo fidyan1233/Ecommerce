@@ -9,15 +9,12 @@ import Home from './component/Home/Home.js';
 function App() {
   return (
     <Router>
-      
-    <Header/>
-    <Route exact path='/' Component={Home}/>
-    <Footer/>
-
-  
+      <Header />
+      <Routes>
+        <Route exact path='/' element={<Home />} />
+      </Routes>
+      <Footer />
     </Router>
-
-
   );
 }
 

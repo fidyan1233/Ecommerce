@@ -3,6 +3,7 @@ import "../../../styles/header.css"
 import Search from "../../../images/search.png";
 import User from "../../../images/user.png";
 import Cart from "../../../images/shopping-cart.png";
+import { Link } from "react-router-dom";
 
 
 
@@ -20,13 +21,13 @@ const Header = () => {
                 <div className="mobile-icons">
                     <div className="center">
                         <div>
-                            <a href=""><img src={Search} alt="" /></a>
+                            <Link to=""><img src={Search} alt="" /></Link>
                         </div>
                         <div>
-                            <a href=""><img src={Cart} alt="" /></a>
+                            <Link to=""><img src={Cart} alt="" /></Link>
                         </div>
                         <div>
-                            <a href=""><img src={User} alt="" /></a>
+                            <Link to=""><img src={User} alt="" /></Link>
                         </div>
 
                     </div>
@@ -40,13 +41,13 @@ const Header = () => {
                             Products
                         </li>
                         <li>
-                            <a href=""><img src={Search} alt="" /></a>
+                            <Link to=""><img src={Search} alt="" /></Link>
                         </li>
                         <li>
-                            <a href=""><img src={Cart} alt="" /></a>
+                            <Link to=""><img src={Cart} alt="" /></Link>
                         </li>
                         <li>
-                            <a href=""><img src={User} alt="" /></a>
+                            <Link to=""><img src={User} alt="" /></Link>
                         </li>
 
                     </ul>
