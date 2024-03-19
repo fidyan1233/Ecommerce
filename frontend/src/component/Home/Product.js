@@ -19,13 +19,13 @@ const Product = ({ product }) => {
         <>
             <Link className='productCard' to={product._id}>
                 <img src={product.images[0].url} alt={product.name} />
-                <p>{product.brand}</p>
-                <div className='prod-desc'>{product.desc}</div>
+                <p>{product.name}</p>
+                <div className='prod-desc'>Nice Quality Thirts</div>
 
                 <div>
                     <ReactStars {...options} /> <span> (256 Reviews) </span>
                 </div>
-                <span>{product.price}</span>
+                <span>{`₹${product.price}`}</span>
             </Link>
         </>
     )

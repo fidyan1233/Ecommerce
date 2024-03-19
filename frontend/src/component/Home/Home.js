@@ -1,19 +1,21 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useEffect } from 'react'
 import Banner from "../../images/banner.png"
 import "../../styles/Home.css";
 import Product from "./Product.js"
 import MetaData from '../layout/MetaData.js';
+import { getProduct } from '../../actions/productAction.js';
+import { useSelector, useDispatch } from "react-redux";
 
 
-const product = {
-    brand: "Tom Hiddle",
-    desc: "Printed T-shirts for Mens",
-    images: [{ url: "https://i.ibb.co/Z84Ys3m/Whats-App-Image-2024-01-21-at-8-56-04-PM-removebg-preview.png" }],
-    price: "₹300",
-    _id: "fidyan",
-};
 
 function Home() {
+    const dispatch = useDispatch();
+    const { loading, error, products, productCount } = useSelector(
+        (state) => state.products
+    );
+    useEffect(() => {
+        dispatch(getProduct());
+    }, [dispatch])
     return (
         <Fragment>
             <MetaData title="VanguardVigor Home Page" />
@@ -26,14 +28,13 @@ function Home() {
 
 
             <div className="product-container" id='conatiner'>
-                <Product product={product} />
-                <Product product={product} />
-                <Product product={product} />
-                <Product product={product} />
-                <Product product={product} />
-                <Product product={product} />
-                <Product product={product} />
-                <Product product={product} />
+                {
+                    products && products.map((product) => (
+                        <Product product={product} />
+                    )
+                    )
+                }
+
 
             </div>
         </Fragment>

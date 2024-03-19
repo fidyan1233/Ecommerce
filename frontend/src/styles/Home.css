@@ -25,12 +25,14 @@
     color: rgba(48, 48, 48);
     margin: 2vmax;
     transition: all 0.5s !important;
-    padding-bottom: 0.5vmax;
+    padding: 0.5vmax;
 
 }
 
 .productCard>img {
     width: 14vmax;
+    margin-bottom: 10px;
+
 }
 
 .productCard>div {
@@ -94,6 +96,11 @@
 
     .productCard {
         width: 20vmax !important;
+        padding-top: 0.5vmax;
+        padding-left: 0;
+        padding-right: 0;
+        padding-bottom: 0.5vmax;
+    
     }
 
     .productCard>img {
