@@ -1,0 +1,39 @@
+.mobile-footer {
+    display: none;
+    background-color: #000;
+    position: fixed;
+    z-index: 30;
+    bottom: 0;
+    width: 100%;
+    padding: 1em;
+}
+
+
+.center {
+    display: flex !important;
+    justify-content: space-between !important;
+
+}
+
+.hsxas {
+    /* text-align: center !important; */
+  
+    /* width: vw !important; */
+    width: 100%;
+    text-align: center;
+    margin-left: -30px;
+}
+
+.mobile-footer img {
+    width: 24px !important;
+
+}
+
+@media(max-width:456px) {
+    .mobile-footer {
+        display: block !important;
+    }
+    .footer{
+        margin-bottom: 100px;
+    }
+}

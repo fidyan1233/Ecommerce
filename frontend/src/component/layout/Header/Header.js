@@ -2,6 +2,7 @@ import React from "react";
 import "../../../styles/header.css"
 import Search from "../../../images/search.png";
 import User from "../../../images/user.png";
+import Logo from "../../../images/logo.png";
 import Cart from "../../../images/shopping-cart.png";
 import { Link } from "react-router-dom";
 
@@ -16,19 +17,14 @@ const Header = () => {
             <div className="header">
 
                 <div className="logo">
-                    <h1>VANGUARD VIGOR</h1>
+                <Link to=""><img src={Logo} alt="" /></Link>
                 </div>
                 <div className="mobile-icons">
                     <div className="center">
                         <div>
                             <Link to=""><img src={Search} alt="" /></Link>
                         </div>
-                        <div>
-                            <Link to=""><img src={Cart} alt="" /></Link>
-                        </div>
-                        <div>
-                            <Link to=""><img src={User} alt="" /></Link>
-                        </div>
+                       
 
                     </div>
                 </div>

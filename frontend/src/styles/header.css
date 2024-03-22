@@ -1,5 +1,5 @@
 .header{
-    background-color: #35374B;
+    background-color: #040403;
     display: flex;
     justify-content: space-between;
     padding: 0 4em;
@@ -7,9 +7,12 @@
     top: 0;
     z-index: 1000;
 }
-.header .logo h1{
-    font-size: 25px;
-    color: #fff;
+.logo{
+    width: 200px;
+    padding: 4px;
+}
+.logo img{
+    width: 100%;
 }
 .header .menu{
     display: flex;
@@ -50,6 +53,17 @@
 .header{
     padding: 0 1em;
 }
+.header .logo{
+    padding: 4px 0;
+}
+.header .logo img{
+    width: 200px;
+    
+}
+.mobile-icons img{
+    width: 24px;
+}
+
 }
 
 
