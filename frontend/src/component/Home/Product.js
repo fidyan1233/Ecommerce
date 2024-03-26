@@ -6,7 +6,7 @@ import ReactStars from "react-rating-stars-component";
 const options = {
     edit: false,
     color: "rgba(20,20,20,0.1)",
-    activeColor: "tomato",
+    activeColor: "#FED144",
     size: "20",
     value: 2.5,
     isHalf: true,
@@ -20,12 +20,13 @@ const Product = ({ product }) => {
             <Link className='productCard' to={`/product/${product._id}`}>
                 <img src={product.images[0].url} alt={product.name} />
                 <p>{product.name}</p>
-                <div className='prod-desc'>Nice Quality Thirts</div>
+                <div className='prod-desc'>best quality t-shirts, grey color premium printing</div>
 
                 <div>
-                    <ReactStars {...options} /> <span> (256 Reviews) </span>
+                    <ReactStars {...options} />
                 </div>
                 <span>{`₹${product.price}`}</span>
+                <button>Add to Cart</button>
             </Link>
         </>
     )

@@ -1,11 +1,13 @@
 .homeHeading {
     text-align: center;
     font-size: 1.4vmax;
-    border-bottom: 1px solid rgba(21, 21, 21, 0.5);
+    border-bottom: 1px solid #fff;
+
     width: 20vmax;
     padding: 1vmax;
-    margin: 5vmax auto;
-    color: rgba(0, 0, 0, 0.7);
+    /* margin: 5vmax auto; */
+    margin: 20px auto;
+
 }
 
 .product-container {
@@ -22,10 +24,13 @@
     display: flex;
     flex-direction: column;
     text-decoration: none;
-    color: rgba(48, 48, 48);
+    color: #0e0e0e;
+
     margin: 2vmax;
     transition: all 0.5s !important;
     padding: 0.5vmax;
+    text-align: center;
+    background-color: rgba(244, 244, 244, 1);
 
 }
 
@@ -36,7 +41,7 @@
 }
 
 .productCard>div {
-    margin: 0.5vmax;
+    margin:  0 auto;
     display: flex;
     justify-content: flex-start;
 }
@@ -52,12 +57,13 @@
     margin-bottom: 0;
     font-weight: 700;
 }
-.prod-desc{
+
+.prod-desc {
     font-size: 0.9vmax !important;
 }
 
 .productCard>span {
-    margin: 0.5vmax;
+    /* margin: 0.5vmax; */
     color: tomato;
     font-size: 1vmax;
 }
@@ -75,8 +81,8 @@
     }
 
     .prod-desc {
-        font-size: 1.3vmax !important;
-       
+        font-size: 10px !important;
+
     }
 
     .productCard>div {
@@ -86,25 +92,39 @@
 
     .productCard>span {
         font-size: 1.5vmax;
+        margin-top: 0px;
+        color: rgba(96, 159, 0, 1);
+        font-weight: 800 !important;
+
     }
+   
 
     .productCard>div>span {
         margin: 0;
         font: 300 1vmax 'Roboto' !important;
+        color: rgba(96, 159, 0, 1);
 
     }
 
     .productCard {
         width: 19vmax !important;
-        padding-top: 0;
-        padding-left: 0;
-        padding-right: 0;
-        padding-bottom: 0.5vmax;
-    
+
+        border-radius: 10px;
+        padding: 0;
+
+    }
+    .productCard button{
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        border: none;
+        margin-top: 3px;
+        background-color: rgba(157, 159, 154, 1);
+        color: #fff;
     }
 
     .productCard>img {
         width: 19vmax;
+        margin-bottom: 0 !important;
     }
 
     .product-container {
@@ -112,5 +132,80 @@
         display: flex;
         justify-content: center;
     }
+}
+
+.gallery {
+    background: #000;
+}
+
+.gallery-cell1 {
+    width: 66%;
+    height: 200px;
+    margin-right: 10px;
+    background: url("../images/mobile-banner.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+
+}
+
+.gallery-cell2 {
+    width: 66%;
+    height: 200px;
+    margin-right: 10px;
+    background: url("../images/mobile-banner2.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+
+}
+
+.gallery-cell3 {
+    width: 66%;
+    height: 200px;
+    margin-right: 10px;
+    background: url("../images/mobile-banner.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+
+}
+
+.gallery-cell4 {
+    width: 66%;
+    height: 200px;
+    margin-right: 10px;
+    background: url("../images/mobile-banner2.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+
+}
+
+.gallery-cell5 {
+    width: 66%;
+    height: 200px;
+    margin-right: 10px;
+    background: url("../images/mobile-banner.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+
+}
+
+.gallery-cell6 {
+    width: 66%;
+    height: 200px;
+    margin-right: 10px;
+    background: url("../images/mobile-banner2.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+
 
 }

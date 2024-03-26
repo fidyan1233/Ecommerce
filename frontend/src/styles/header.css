@@ -14,6 +14,18 @@
 .logo img{
     width: 100%;
 }
+.search-bar{
+    display: none;
+    /* width: 500px; */
+    position: relative;
+ 
+
+
+
+}
+
+
+
 .header .menu{
     display: flex;
     align-items: center;
@@ -52,17 +64,60 @@
 }
 .header{
     padding: 0 1em;
+    display: block;
+    position: sticky;
+    padding-bottom:20px ;
+  
 }
 .header .logo{
     padding: 4px 0;
+    margin: auto !important;
+}
+.search-bar{
+    display: block;
+    /* background-color: #e80a0a; */
+    width: 340px;
+    margin: auto;
+    margin-top: 10px;
+    
+}
+.search-bar input{ 
+    height: 40px;
+    color: #fff;
+    gap: 0px;
+    padding: 0 40px;
+    opacity: 0px;
+    border: 0.4px solid #424241;
+    border-radius: 10px;
+/* border-image-source: linear-gradient(90.79deg, rgba(255, 255, 255, 0.7) 0%, rgba(153, 153, 153, 0.3) 100.83%); */
+    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, #2a2929 70%, rgba(255, 255, 255, 0));
+    position: relative;
+
+   
+    width: 100% !important;
+}
+.search-icon{
+    width: 45px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.filter-icon{
+    width: 45px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.search-bar input:focus{
+    outline: none;
 }
 .header .logo img{
     width: 200px;
     
 }
-.mobile-icons img{
-    width: 24px;
-}
+
+
 
 }
 

@@ -1,9 +1,10 @@
 import React from "react";
 import "../../../styles/header.css"
-import Search from "../../../images/search.png";
+import Search from "../../../images/search-icon.png";
 import User from "../../../images/user.png";
 import Logo from "../../../images/logo.png";
 import Cart from "../../../images/shopping-cart.png";
+import Filter from "../../../images/filter.png"
 import { Link } from "react-router-dom";
 
 
@@ -17,17 +18,16 @@ const Header = () => {
             <div className="header">
 
                 <div className="logo">
-                <Link to=""><img src={Logo} alt="" /></Link>
+                    <Link to=""><img src={Logo} alt="" /></Link>
                 </div>
-                <div className="mobile-icons">
-                    <div className="center">
-                        <div>
-                            <Link to=""><img src={Search} alt="" /></Link>
-                        </div>
-                       
+                <div className="search-bar row ">
+                    
+                    <input type="text" placeholder="Search your Product...." />
+                    <img className="search-icon py-2" src={Search} alt="" />
+                    {/* <img className="search-icon" src={Search} alt="" /> */}
+                    <img className="filter-icon py-2" src={Filter} alt="" />
+                </div>
 
-                    </div>
-                </div>
                 <div className="menu">
                     <ul>
                         <li>
@@ -49,9 +49,9 @@ const Header = () => {
                     </ul>
                 </div>
 
-            </div>
+            </div >
 
-        
+
         </>
     );
 };

@@ -41,65 +41,87 @@
 } */
 
 .grid-container {
-    display: grid;
-    grid-template-columns: auto auto;
-    /* background-color: #2196F3; */
-  
-  }
-  .grid-item1{
-    width: 50vw;
-    max-width: 100%;
-  }
-.product-img{
-    padding: 50px 100px 50px 100px;
-}
-  .product-img img{
-    width: 100%;
-  }
-  .grid-item2{
-    width: 48vw;
-  }
-  .product-details{
-    padding: 50px 10px 50px 10px ;
+  display: grid;
+  grid-template-columns: auto auto;
+  /* background-color: #2196F3; */
 
-  }
-  .product-details .cart-add-btn button{
-    border: none;
-    background-color: tomato;
-    padding: 5px;
-    margin-right: 20px;
-    cursor: pointer;
-    color: aliceblue;
-    width: 30px;
-    font-size: 13px;
-  }
-  .product-details .cart-add-btn input{
-    width: 20px;
-    margin-right: 10px;
-    padding: 2px 0px;
-    border-radius: 0;
-    border: none;
-  }
+}
+
+.product-img img {
+  background-color: rgba(244, 244, 244, 1) !important;
+}
+
+.grid-item1 {
+  width: 50vw;
+  max-width: 100%;
+}
+
+.product-img {
+  padding: 50px 100px 50px 100px;
+}
+
+.product-img img {
+  width: 100%;
+}
+
+.grid-item2 {
+  width: 48vw;
+}
+
+.product-details {
+  padding: 50px 10px 50px 10px;
+  color: #fff;
+
+}
+
+.product-details .cart-add-btn button {
+  border: none;
+  background-color: tomato;
+  padding: 5px;
+  margin-right: 20px;
+  cursor: pointer;
+  color: aliceblue;
+  width: 30px;
+  font-size: 13px;
+}
+
+.product-details .cart-add-btn input {
+  width: 20px;
+  margin-right: 10px;
+  padding: 2px 0px;
+  border-radius: 0;
+  border: none;
+  background-color: #000 !important;
+  color: #fff;
+}
 
 
 
 @media (max-width:473px) {
-    .grid-container{
-        display: inline;
-    }
-    .grid-item1{
-        width: 100vw;
-      }
-      .grid-item2{
-        width: 100vw;
-      }
-      .product-img{
-        padding: 0;
-    }
-    .product-details{
-        padding: 0 20px;
-        word-spacing: 3px;
-    
-      }
-    
+  .grid-container {
+    display: inline;
+
+  }
+
+  .grid-item1 {
+    width: 100vw;
+  }
+
+  .grid-item2 {
+    width: 100vw;
+    border-radius: 30px !important;
+  }
+
+  .product-img {
+    padding: 0;
+  }
+
+  .product-details {
+    padding: 0 20px;
+    word-spacing: 3px;
+    /* border-radius: 10px; */
+
+
+  }
+
 }
