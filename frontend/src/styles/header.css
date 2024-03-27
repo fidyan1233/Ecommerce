@@ -76,7 +76,7 @@
 .search-bar{
     display: block;
     /* background-color: #e80a0a; */
-    width: 340px;
+    /* width: 340px; */
     margin: auto;
     margin-top: 10px;
     
@@ -100,13 +100,13 @@
     width: 45px;
     position: absolute;
     top: 0;
-    left: 0;
+    left:10px !important;
 }
 .filter-icon{
     width: 45px;
     position: absolute;
     top: 0;
-    right: 0;
+    right: 10px !important;
 }
 
 .search-bar input:focus{

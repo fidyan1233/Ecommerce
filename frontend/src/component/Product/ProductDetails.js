@@ -2,9 +2,10 @@ import React, { Fragment, useEffect } from 'react'
 import Carousel from 'react-material-ui-carousel'
 import '../../styles/productDetails.css'
 import { useSelector, useDispatch } from 'react-redux'
-import { getProductDetails } from '../../actions/productAction'
+import { clearErrors, getProductDetails } from '../../actions/productAction'
 import { useParams } from 'react-router-dom';
 import ReactStars from "react-rating-stars-component";
+import { useAlert } from 'react-alert'
 
 
 const options = {
@@ -22,12 +23,18 @@ const ProductDetails = () => {
     const { id } = useParams(); // Access the id from the route params
 
     const dispatch = useDispatch();
-
+    const alert = useAlert();
 
     const { product, loading, error } = useSelector(state => state.productDetails);
     useEffect(() => {
+        if(error){
+            alert.error(error);
+            dispatch(clearErrors());
+        }
         dispatch(getProductDetails(id)); // Use the id obtained from useParams
-    }, [dispatch, id]);
+    }, [dispatch, id,error,alert]);
+
+
 
     return (
         <Fragment>

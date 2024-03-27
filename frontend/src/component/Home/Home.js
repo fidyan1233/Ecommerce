@@ -2,9 +2,9 @@ import React, { Fragment, useEffect } from 'react'
 import Banner from "../../images/mobile-banner.png"
 import Banner2 from "../../images/mobile-banner2.png"
 import "../../styles/Home.css";
-import Product from "./Product.js"
+import Product from "./ProductCard.js"
 import MetaData from '../layout/MetaData.js';
-import { getProduct } from '../../actions/productAction.js';
+import { clearErrors, getProduct } from '../../actions/productAction.js';
 import { useSelector, useDispatch } from "react-redux";
 import { useAlert } from 'react-alert';
 
@@ -18,7 +18,8 @@ function Home() {
     );
     useEffect(() => {
         if (error) {
-            return alert.error(error);
+            alert.error(error);
+            dispatch(clearErrors());
         }
         dispatch(getProduct());
     }, [dispatch, error, alert])
@@ -69,14 +70,11 @@ function Home() {
 
 
             <div className="product-container" id='conatiner'>
-                {
-                    products && products.map((product) => (
-                        <Product product={product} />
-                    )
-                    )
-                }
-
-
+            {
+    products && products.slice(0, 8).map((product) => (
+        <Product key={product.id} product={product} />
+    ))
+}
             </div>
         </Fragment>
     )

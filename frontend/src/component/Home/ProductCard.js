@@ -14,7 +14,7 @@ const options = {
 
 
 }
-const Product = ({ product }) => {
+const ProductCard = ({ product }) => {
     return (
         <>
             <Link className='productCard' to={`/product/${product._id}`}>
@@ -32,4 +32,4 @@ const Product = ({ product }) => {
     )
 }
 
-export default Product
+export default ProductCard
