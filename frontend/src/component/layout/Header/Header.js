@@ -17,7 +17,8 @@ import FileCopyIcon from '@mui/icons-material/FileCopy';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import Typography from '@material-ui/core/Typography';
-// import Slider from '@material-ui/core/Slider';
+import Slider from '@material-ui/core/Slider';
+import Rating from '@mui/material/Rating';
 
 
 
@@ -25,7 +26,11 @@ import Typography from '@material-ui/core/Typography';
 
 
 
-
+const categories = [
+    "T-shirt",
+    "Shirt",
+    "Hoodie"
+]
 
 
 
@@ -73,8 +78,9 @@ const StyledMenu = styled((props) => (
     },
 }));
 
-export default function Header({ price, setPrice }) {
+export default function Header({ price, setPrice, category, setCategory, ratings, setRatings }) {
     const [anchorEl, setAnchorEl] = React.useState(null);
+
 
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
@@ -108,9 +114,9 @@ export default function Header({ price, setPrice }) {
         }
     };
 
-    // const priceHandler = (event, newPrice) => {
-    //     setPrice(newPrice);
-    // }
+    const priceHandler = (event, newPrice) => {
+        setPrice(newPrice);
+    }
     // Get the current path
     const currentPath = window.location.pathname;
 
@@ -149,7 +155,7 @@ export default function Header({ price, setPrice }) {
                             aria-controls={open ? 'demo-customized-menu' : undefined}
                             aria-haspopup="true"
                             aria-expanded={open ? 'true' : undefined}
-                            
+
                             variant="contained"
                             disableElevation
                             onClick={handleClick}
@@ -167,20 +173,48 @@ export default function Header({ price, setPrice }) {
                     >
                         <div className="filter-box">
                             <h3 className="text-center">Filter Porducts</h3>
-                            <Typography>Price</Typography>
-                            {/* <Slider
+                            <Typography>Price:</Typography>
+                            <Slider
                                 value={price}
                                 onChange={priceHandler}
                                 valueLabelDisplay="auto"
                                 aria-labelledby="range-slider"
                                 min={0}
-                                max={1500}
-            
-                            /> */}
+                                max={700}
+                            />
+                            <Typography>Categories:</Typography>
+                            <ul className="category-box">
+                                {
+                                    categories.map((category) => (
+                                        <li className="category-link" key={category} onClick={() => setCategory(category)}>
+                                            {category}
+                                        </li>
+                                    ))
+                                }
+                            </ul>
+                            <fieldset>
+
+                                <Typography>Ratings Above</Typography>
+                                <Slider
+                                    value={ratings}
+                                    onChange={(e, newRating) => {
+                                        setRatings(newRating);
+
+                                    }}
+                                    aria-labelledby="continuous-slider"
+                                    min={0}
+                                    max={5}
+                                />
+                                <Rating
+                                    name="simple-controlled"
+                                    value={ratings}
+                                    onChange={(e, newRating) => {
+                                        setRatings(newRating);
+
+                                    }}
+                                />
+                            </fieldset>
                         </div>
-
-
-
                     </StyledMenu>
                 </div>
 

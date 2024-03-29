@@ -4,11 +4,13 @@ import { useSelector, useDispatch } from "react-redux";
 import ProductCard from '../Home/ProductCard.js';
 import { useParams } from 'react-router-dom';
 import Pagination from "react-js-pagination";
+import {useAlert} from 'react-alert';
 
-const Products = () => {
+const Products = ({price,category,ratings}) => {
     const dispatch = useDispatch();
     const { keyword } = useParams(); // Access the id from the route params
     const [currentPage, setCurrentPage] = useState(1)
+    const alert = useAlert();
 
     const { products, error, productsCount, resultPerPage } = useSelector(state => state.products)
 
@@ -18,9 +20,13 @@ const Products = () => {
         setCurrentPage(e)
     }
     useEffect(() => {
-        dispatch(getProduct(keyword,currentPage));
+        if(error){
+            alert.error(error)
+            dispatch(clearErrors());
+        }
+        dispatch(getProduct(keyword,currentPage,price,category,ratings));
 
-    }, [dispatch, keyword,currentPage])
+    }, [dispatch, keyword,currentPage,price,category,ratings,alert,error])
     return (
         <Fragment>
 

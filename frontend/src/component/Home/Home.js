@@ -13,7 +13,7 @@ function Home() {
 
     const alert = useAlert();
     const dispatch = useDispatch();
-    const { loading, error, products, productCount } = useSelector(
+    const { loading, error, products} = useSelector(
         (state) => state.products
     );
     useEffect(() => {
@@ -65,16 +65,16 @@ function Home() {
                     <span class="visually-hidden">Next</span>
                 </button> */}
             </div>
-          
+
             <h2 className='homeHeading'>Featured Products</h2>
 
 
             <div className="product-container" id='conatiner'>
-            {
-    products && products.slice(0, 8).map((product) => (
-        <Product key={product.id} product={product} />
-    ))
-}
+                {
+                    products && products.slice(0, 8).map((product) => (
+                        <Product key={product.id} product={product} />
+                    ))
+                }
             </div>
         </Fragment>
     )

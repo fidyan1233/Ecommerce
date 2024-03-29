@@ -126,3 +126,21 @@
 
 
 
+.category-box{
+    padding: 0;
+
+}
+.category-link{
+    list-style: none;
+    margin: 0.4vmax;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+.category-link:hover{
+    color: rgba(96, 159, 0, 1);
+}
+fieldset{
+    border: 0.2px solid #fff !important;
+    padding: 5px 10px;
+    margin-top: 20px;
+}
