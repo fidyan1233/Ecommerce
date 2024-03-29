@@ -33,7 +33,7 @@ const ResFooter = () => {
                             <ShoppingCartIcon style={{color:'#8c8c8c',fontSize:"30px",marginBottom:"-8px"} } />
                         </Badge>
                     </Link>
-                </div>
+                </div>  
                 <div className="col-3 text-center">
                     <Link to={'products'}><img src={User} alt='Store' /></Link>
 

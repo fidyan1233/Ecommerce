@@ -8,15 +8,19 @@ import Home from './component/Home/Home.js';
 import ResFooter from './component/layout/Footer/ResFooter.js';
 import ProductDetails from './component/Product/ProductDetails.js';
 import Product from './component/Product/Products.js';
+import { useState } from 'react';
+
+
 
 
 
 
 
 function App() {
+  // const [price, setPrice] = useState([0, 1500]);
   return (
     <Router>
-      <Header />
+      <Header  />
       <Routes>
         <Route exact path='/' element={<Home />} />
         <Route exact path='/product/:id' element={<ProductDetails />} />
